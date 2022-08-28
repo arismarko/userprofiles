@@ -22,6 +22,6 @@ model Order {
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   products      String
-  buyer         User?   @relation(fields: [authorId], references: [id])
+  buyer         User?   @relation(fields: [buyerId], references: [id])
   buyerId       String?
 }
