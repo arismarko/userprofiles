@@ -15,13 +15,15 @@ model User {
   title         String
   name          String
   surname       String
+  orders        Order[]
+  @@map(name: "users")
 }
 
 model Order {
-  id            String       @default(cuid()) @id
+  id            String    @default(cuid()) @id
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   products      String
-  buyer         User?   @relation(fields: [buyerId], references: [id])
+  buyer         User?     @relation(fields: [buyerId], references: [id])
   buyerId       String?
 }
